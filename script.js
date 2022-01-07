@@ -41,11 +41,15 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function game() {
-  for (i = 0; i < 5; i++) {
-    let playerPlay = prompt("Rock, Paper or Scissor?");
-    let outcome = playRound(playerPlay, computerPlay());
-    console.log(outcome);
-  }
+  let playerPlay = prompt("Rock, Paper or Scissor?");
+  let outcome = playRound(playerPlay, computerPlay());
+  console.log(outcome);
 }
 
+const btn = document.querySelectorAll("button");
 
+btn.forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log(playRound(button.textContent, computerPlay()));
+  });
+});
