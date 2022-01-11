@@ -62,9 +62,26 @@ btn.forEach((button) => {
       const currentRound = playRound(button.textContent, computerPlay());
       announcementBoard.textContent = currentRound[0];
       internalCounter = internalCounter + currentRound[1];
+      console.log(internalCounter);
       roundCounter--;
       round.textContent =
         round.textContent.slice(0, 8) + roundCounter.toString();
+      if (roundCounter === 0 && internalCounter > 0) {
+        announcementBoard.textContent = "CONGRATS YOU WIN!!!";
+        round.textContent = " Rounds: 5";
+        internalCounter = 0;
+        roundCounter = round.textContent[round.textContent.length - 1];
+      } else if (roundCounter === 0 && internalCounter < 0) {
+        announcementBoard.textContent = "Sorry you lose :(";
+        round.textContent = " Rounds: 5";
+        internalCounter = 0;
+        roundCounter = round.textContent[round.textContent.length - 1];
+      } else if (roundCounter === 0 && internalCounter === 0) {
+        announcementBoard.textContent = "YOU TIED! PLAY AGAIN!";
+        round.textContent = " Rounds: 5";
+        internalCounter = 0;
+        roundCounter = round.textContent[round.textContent.length - 1];
+      }
     } else {
       round.textContent = " Rounds: 5";
       roundCounter = round.textContent[round.textContent.length - 1];
